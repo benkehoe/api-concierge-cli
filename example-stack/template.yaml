@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    CodeUri: ./src
+    Runtime: python3.7
+    Timeout: 25
+
+Outputs:
+  Function1:
+    Value: !Ref Function1Func
+  Function2:
+    Value: !Ref Function2Func
+  Function3:
+    Value: !Ref Function3Func
+
+Resources:
+  Function1Func:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers.handler1
+      Tags:
+        api-concierge: "true"
+
+  Function2Func:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers.handler2
+      Tags:
+        api-concierge: Uses decorator
+
+  Function3Func:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers.handler3
+      Tags:
+        api-concierge: Multi-step prompting
